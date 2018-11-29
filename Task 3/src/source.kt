@@ -41,7 +41,7 @@ fun generatePermutations() {
 }
 
 
-fun findRange() {
+fun findRange(arrays:Array<Array<Int>>) {
 
 }
 
@@ -91,12 +91,9 @@ fun maxRemoveableVertexes() {
 
 fun main(argc: Array<String>) {
 //    generatePermutations()
-/*
-3
-4 10 15 24 26
-0 9 12 20
-5 18 22 30
-*/
+
+
+
 
     findRange()
 

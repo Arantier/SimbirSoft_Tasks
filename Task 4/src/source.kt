@@ -69,9 +69,31 @@ fun canItSort(): String {
     //TODO:Доделай
     val num = readLine()?.toInt() ?: return "NO"
     val inp = readLine()?.split(" ") ?: return "NO"
-    var array = Array(num, { i -> inp[i].toInt() })
-    val strPosToSort = readLine() ?: return "NO"
-    return "YES"
+    var array = ArrayList<Int>()
+    for (i in inp){
+        array.add(i.toInt())
+    }
+    val finalArray = array.sorted()
+    val strPosToSort = "${readLine() ?: return "NO"}0"
+    var subArrToSort = ArrayList<Int>()
+    var start = 0
+    for (i in 0 until num){
+        if (strPosToSort[i]=='1'){
+            if (i==0 || strPosToSort[i-1]=='0'){
+                start = i
+            }
+            subArrToSort.add(array[i])
+            if (strPosToSort[i+1]=='0'){
+                subArrToSort.add(array[i+1])
+                subArrToSort.sort()
+                for (j in 0 until subArrToSort.size){
+                    array[start+j] = subArrToSort[j]
+                }
+                subArrToSort.clear()
+            }
+        }
+    }
+    return if (finalArray == array)"YES" else "NO"
 }
 
 
