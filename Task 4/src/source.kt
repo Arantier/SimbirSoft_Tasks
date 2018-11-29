@@ -15,10 +15,10 @@ fun findMaxSubArray(arr: Array<Int>): Int {
 
 fun decode(input: String): String {
     var openBracketPosition = input.indexOfFirst { it == '[' }
-    while (openBracketPosition>0 && !input[openBracketPosition-1].isDigit()){
-        openBracketPosition = input.substring((openBracketPosition+1)..(input.length-1)).indexOfFirst { it == '[' }
+    while (openBracketPosition > 0 && !input[openBracketPosition - 1].isDigit()) {
+        openBracketPosition = input.substring((openBracketPosition + 1)..(input.length - 1)).indexOfFirst { it == '[' }
     }
-    if (openBracketPosition<0){
+    if (openBracketPosition < 0) {
         return input
     }
 
@@ -33,35 +33,45 @@ fun decode(input: String): String {
         position++
     }
     val closeBracketPosition = position - 1
-    if (input[closeBracketPosition]!=']'){
+    if (input[closeBracketPosition] != ']') {
         return input
     }
 
-    val stringToMultiply = input.substring(openBracketPosition+1,closeBracketPosition)
+    val stringToMultiply = input.substring(openBracketPosition + 1, closeBracketPosition)
     var numInString = ""
-    var pos = openBracketPosition-1
-    while(pos>=0 && input[pos].isDigit()){
-        numInString+=input[pos]
+    var pos = openBracketPosition - 1
+    while (pos >= 0 && input[pos].isDigit()) {
+        numInString += input[pos]
         pos--
     }
     val multiplier = numInString.reversed().toInt()
 
-    var output = input.substring(0,pos+1)
-    for(i in 0 until multiplier){
-        output+=stringToMultiply
+    var output = input.substring(0, pos + 1)
+    for (i in 0 until multiplier) {
+        output += stringToMultiply
     }
-    output+=input.substring(closeBracketPosition+1,input.length)
+    output += input.substring(closeBracketPosition + 1, input.length)
     return output
 }
 
 fun decoder(input: String): String {
     var output = decode(input)
     var nextOutput = decode(output)
-    while (output.compareTo(nextOutput)!=0){
+    while (output.compareTo(nextOutput) != 0) {
         output = nextOutput
         nextOutput = decode(nextOutput)
     }
     return output
+}
+
+
+fun canItSort(): String {
+    //TODO:Доделай
+    val num = readLine()?.toInt() ?: return "NO"
+    val inp = readLine()?.split(" ") ?: return "NO"
+    var array = Array(num, { i -> inp[i].toInt() })
+    val strPosToSort = readLine() ?: return "NO"
+    return "YES"
 }
 
 
@@ -71,4 +81,6 @@ fun main(argv: Array<String>) {
     println(decoder("3[a]2[bc]"))
     println(decoder("3[a2[c]]"))
     println(decoder("2[abc]3[cd]ef"))
+
+    println(canItSort())
 }
