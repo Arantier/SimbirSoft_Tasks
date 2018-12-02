@@ -35,42 +35,43 @@ fun checkForSplit(arr: ArrayList<Int>,
 
 
 fun allenGoneMad() {
-    fun recursiveDropPairs(arr: ArrayList<Int>): Int {
-        if (arr.isEmpty()) {
-            return 0
-        } else {
-            if (arr[0] == arr[1]) {
-                return recursiveDropPairs(arr.subList(2, arr.size) as ArrayList<Int>)
-            } else if (arr[arr.size - 2] == arr.last()) {
-                return recursiveDropPairs(arr.subList(0, arr.size - 2) as ArrayList<Int>)
-            }
-            for (i in 1 until arr.size - 2) {
-                if (arr[i] == arr[i + 1]) {
-                    arr.remove(arr[i])
-                    return min(i, arr.size - i + 1) + recursiveDropPairs(arr)
-                }
-            }
-            var distance = arr.size
-            for (i in 1 until arr.size) {
-                val e1 = arr.indexOfLast { it == arr[i] }
-                val s2 = arr.indexOfFirst { it == arr[i - 1] }
-                if (i == e1 && (i - 1) == s2) {
-                    val s1 = arr.indexOfFirst { it == arr[i] }
-                    val e2 = arr.indexOfLast { it == arr[i - 1] }
-                    val newDist = e1 - s1 + e2 - s2
-                    if (newDist < distance) {
-                        distance = newDist
-                    }
-                }
-            }
-
-        }
-        return -1
-    }
-
     val num = readLine()?.toInt() ?: return
     val rawPairs = readLine()?.split(" ") ?: return
-    val pairs = Array(num * 2, { it -> rawPairs[it].toInt() })
+    val pairs = ArrayList<Int>()
+    for (i in rawPairs) {
+        pairs.add(i.toInt())
+    }
+    var counter = 0
+
+    fun dropFreePairs() {
+        if (pairs[0] == pairs[1]) {
+            pairs.remove(pairs.first())
+            pairs.remove(pairs.first())
+        } else if (pairs[pairs.size - 2] == pairs.last()) {
+            pairs.remove(pairs.last())
+            pairs.remove(pairs.last())
+        }
+
+        for (i in 0 until pairs.size / 2) {
+            if (pairs[2 * i] == pairs[2 * i + 1]) {
+                counter += 2 * min(2 * i, pairs.size - 2 * i - 1)
+                pairs.remove(pairs[2 * i])
+                pairs.remove(pairs[2 * i])
+                break
+            }
+        }
+    }
+
+    while (pairs.size > 0)
+        if (pairs.isEmpty()) {
+            println(0)
+        } else {
+            dropFreePairs()
+
+            //TODO: Додумай алгоритм
+            // Дальше остаётся последовательность без правильных пар.
+            // Какого-то внятного алгоритма придумать не выходит.
+        }
 
 
 }
@@ -78,5 +79,6 @@ fun allenGoneMad() {
 
 fun main(argv: Array<String>) {
     println(isPalindrome(123321))
-    println(checkForSplit(arrayListOf(2, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10)))
+    println(checkForSplit(arrayListOf(2, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10)))
+    allenGoneMad()
 }
