@@ -1,6 +1,7 @@
 package Tasks
 
 import java.util.TreeSet
+import kotlin.math.min
 
 
 fun generatePermutations() {
@@ -41,8 +42,33 @@ fun generatePermutations() {
 }
 
 
-fun findRange(arrays:Array<Array<Int>>) {
+//Этот алгоритм ужасно неэффективен. Но я уже лишнюю неделю мариную задачи. Пускай это будет хотя бы набросок
+fun findRange(arrays: Array<Array<Int>>) {
+    var minDistance = Integer.MAX_VALUE
+    val grid = Array(arrays.size, { 0 })
+    var start = 0
+    var end = 0
 
+    fun stupidUneffectiveFunctionToPassArrays(pos: Int) {
+        for (el in arrays[pos]) {
+            grid[pos] = el
+            if (pos == (arrays.size - 1)) {
+                val localStart = grid.min()!!
+                val localEnd = grid.max()!!
+                val localDistance = localEnd - localStart
+                if (localDistance<minDistance){
+                    start = localStart
+                    end = localEnd
+                    minDistance = localDistance
+                }
+            } else {
+                stupidUneffectiveFunctionToPassArrays(pos + 1)
+            }
+        }
+    }
+
+    stupidUneffectiveFunctionToPassArrays(0)
+    println("[$start,$end]")
 }
 
 
@@ -90,13 +116,11 @@ fun maxRemoveableVertexes() {
 }
 
 fun main(argc: Array<String>) {
-//    generatePermutations()
+    generatePermutations()
 
 
+    findRange(arrayOf(arrayOf(4, 10, 15, 24, 26), arrayOf(0, 9, 12, 20), arrayOf(5, 18, 22, 30)))
 
-
-    findRange()
-
-//    maxRemoveableVertexes()
+    maxRemoveableVertexes()
 }
 
