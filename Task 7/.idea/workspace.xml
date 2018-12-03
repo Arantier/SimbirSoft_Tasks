@@ -15,8 +15,8 @@
       <file leaf-file-name="source.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/source.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2148">
-              <caret column="22" selection-start-column="22" selection-end-column="22" />
+            <state relative-caret-position="132">
+              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
             </state>
           </provider>
         </entry>
@@ -59,27 +59,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Task 7" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Task 7" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Task 7" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Task 7" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-    </panes>
+    <panes />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -165,7 +145,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -270,8 +250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/source.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2148">
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        <state relative-caret-position="132">
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>

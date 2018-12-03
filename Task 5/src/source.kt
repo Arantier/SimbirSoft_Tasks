@@ -57,9 +57,64 @@ fun findSumOfSquares(num: Int): Int {
 }
 
 
+fun learningLanguages(emp: Array<Array<Int>>) {
+    val adjList = Array<ArrayList<Int>>(emp.size,{ ArrayList() })
+    for (i in 0 until (emp.size-1)) {
+        for (j in (i+1) until emp.size) {
+            if (emp[i].any { emp[j].contains(it) }) {
+                adjList[i].add(j)
+                adjList[j].add(i)
+            }
+        }
+    }
+
+    val freeVert = Array(emp.size, { true })
+
+    fun dfs(v:Int){
+        freeVert[v] = false
+        for (next in adjList[v]){
+            if (freeVert[next]){
+                dfs(next)
+            }
+        }
+    }
+
+    var nLang = 0
+    for (i in 0 until freeVert.size){
+        if (freeVert[i]){
+            nLang++
+            dfs(i)
+        }
+    }
+    nLang--
+    println("$nLang")
+    return
+}
+
+
 fun main(argv: Array<String>) {
     println(if (checkForCross(arrayOf(0, 0, 2, 2), arrayOf(1, 1, 3, 3))) "true" else "false")
     println(if (checkForCross(arrayOf(0, 0, 1, 1), arrayOf(1, 0, 2, 1))) "true" else "false")
 
     println(findSumOfSquares(2000))
+
+    learningLanguages(arrayOf(arrayOf(0),
+            arrayOf(1, 2, 3),
+            arrayOf(1),
+            arrayOf(5, 4),
+            arrayOf(6, 7),
+            arrayOf(3),
+            arrayOf(7, 4),
+            arrayOf(1)))
+    learningLanguages(arrayOf(
+            arrayOf(2),
+            arrayOf(2,3),
+            arrayOf(3,4),
+            arrayOf(4,5),
+            arrayOf(5)
+    ))
+    learningLanguages(arrayOf(
+            arrayOf(2),
+            arrayOf()
+    ))
 }
