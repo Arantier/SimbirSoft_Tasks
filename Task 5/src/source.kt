@@ -1,7 +1,5 @@
 import kotlin.math.pow
 import kotlin.math.sqrt
-import kotlin.math.truncate
-import sun.java2d.cmm.ColorTransform.Out
 
 
 fun checkForCross(rect1: Array<Int>, rect2: Array<Int>): Boolean {

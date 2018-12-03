@@ -1,6 +1,4 @@
 import kotlin.math.min
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 fun isPalindrome(num: Int): Boolean {
     return isPalindrome(num.toString())

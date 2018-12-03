@@ -1,9 +1,3 @@
-package Tasks
-
-import java.util.TreeSet
-import kotlin.math.min
-
-
 fun generatePermutations() {
     val num = readLine()?.toInt() ?: return
     var result: ArrayList<Array<Int>> = ArrayList()

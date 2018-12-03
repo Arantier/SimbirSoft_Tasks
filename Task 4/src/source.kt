@@ -1,6 +1,4 @@
-import java.util.regex.Pattern
 import kotlin.math.max
-import kotlin.math.min
 
 fun findMaxSubArray(arr: Array<Int>): Int {
     var sum = 0
@@ -66,7 +64,6 @@ fun decoder(input: String): String {
 
 
 fun canItSort(): String {
-    //TODO:Доделай
     val num = readLine()?.toInt() ?: return "NO"
     val inp = readLine()?.split(" ") ?: return "NO"
     var array = ArrayList<Int>()

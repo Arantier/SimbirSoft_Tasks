@@ -1,5 +1,3 @@
-import kotlin.math.roundToInt
-
 fun checkForSquare(num: Int): Boolean {
     var x = num.toDouble()
     var xNext = 0.5 * (x + num / x)
@@ -52,7 +50,6 @@ fun main(argv: Array<String>) {
             .joinToString(" "))
     println(arrayOf(0).removeMembersWith2inEndAndMultipleOn2()
             .joinToString(" "))
-
 
     grandTheftKeyboard()
 }
